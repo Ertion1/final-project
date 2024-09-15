@@ -16,7 +16,7 @@ public class RestaurantMapper {
         restaurantDTO.setAddress(restaurant.getAddress());
         restaurantDTO.setCity(restaurant.getCity());
         restaurantDTO.setPhoneNumber(restaurant.getPhoneNumber());
-        restaurantDTO.getInstagramUsername(restaurant.getInstagramUsername());
-        return restaurant;
+        restaurantDTO.setInstagramUsername(restaurant.getInstagramUsername());
+        return restaurantDTO;
     }
 }
