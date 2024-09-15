@@ -28,9 +28,6 @@ public class DishServiceImpl implements DishService {
     public void save(DishDTO dishDTO) {
         Dish dish = DishMapper.mapToEntity(dishDTO);
         this.dishRepository.save(dish);
-
-
-
     }
 
     @Override
@@ -43,9 +40,6 @@ public class DishServiceImpl implements DishService {
         Dish dish = dishOptional.get();
         dish.setName(dishDTO.getName());
         this.dishRepository.save(dish);
-
-
-
     }
 
     @Override

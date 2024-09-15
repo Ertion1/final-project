@@ -5,7 +5,7 @@ import com.sda.restaurant_management_system.model.Client;
 
 public class ClientMapper {
 
-    public static Client mapToEntity(ClientDTO clientDTO){
+    public static Client mapToEntity(ClientDTO clientDTO) {
         Client client=new Client();
         client.setName(clientDTO.getName());
         client.setLastName(clientDTO.getLastName());
