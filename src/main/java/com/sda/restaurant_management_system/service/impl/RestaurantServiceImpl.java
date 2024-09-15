@@ -24,6 +24,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 @Override
     public void save(RestaurantDTO restaurantDTO){
     Restaurant restaurant= RestaurantMapper.mapTo(restaurantDTO);
+    this.restaurantRepository.save(restaurant);
     }
     @Override
     public void update(RestaurantDTO restaurantDTO,Integer Id){
