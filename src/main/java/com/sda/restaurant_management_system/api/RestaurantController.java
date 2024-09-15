@@ -1,12 +1,12 @@
 package com.sda.restaurant_management_system.api;
 
+import com.sda.restaurant_management_system.dto.ClientDTO;
 import com.sda.restaurant_management_system.dto.RestaurantDTO;
 import com.sda.restaurant_management_system.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/restaurant")
@@ -18,4 +18,22 @@ public class RestaurantController {
     public void save(@RequestBody RestaurantDTO restaurantDTO){
         this.restaurantService.save(restaurantDTO);
      }
+    @PutMapping ("/{id}")
+    public void update(@RequestBody RestaurantDTO restaurantDTO, @PathVariable("id") Integer Id){
+        restaurantService.update(restaurantDTO , Id);
+    }
+    @GetMapping("/{id}")
+    public RestaurantDTO findbyId(@PathVariable("id") Integer id){
+        return restaurantService.findById(id);
+    }
+
+    @GetMapping
+    public List<RestaurantDTO> findAll() {
+        return restaurantService.findAll();
+    }
+
+    @DeleteMapping ("/{id}")
+    public void delete (@PathVariable Integer id) {
+        restaurantService.delete(id);
+    }
 }

@@ -7,11 +7,10 @@ public class RestaurantMapper {
     public static Restaurant mapTo(RestaurantDTO restaurantDTO){
         Restaurant restaurant= new Restaurant();
         restaurant.setName(restaurantDTO.getName());
-        restaurantDTO.setId(restaurantDTO.getId());
-        restaurantDTO.setCity(restaurantDTO.getCity());
-        restaurantDTO.setAddress(restaurantDTO.getAddress());
-        restaurantDTO.setPhoneNumber(restaurant.getPhoneNumber());
-        restaurantDTO.setInstagramUsername(restaurantDTO.getInstagramUsername());
+        restaurant.setCity(restaurantDTO.getCity());
+        restaurant.setAddress(restaurantDTO.getAddress());
+        restaurant.setPhoneNumber(restaurantDTO.getPhoneNumber());
+        restaurant.setInstagramUsername(restaurantDTO.getInstagramUsername());
         return restaurant;
     }
     public static RestaurantDTO mapToDTO(Restaurant restaurant){
