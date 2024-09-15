@@ -1,5 +1,40 @@
 package com.sda.restaurant_management_system.api;
 
+import com.sda.restaurant_management_system.dto.ClientDTO;
+import com.sda.restaurant_management_system.service.ClientService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping ( "/client")
 public class ClientController {
+    @Autowired
+    private ClientService clientService;
+
+    @PostMapping
+    public void save (@RequestBody ClientDTO clientDTO){
+        clientService.save(clientDTO);
+    }
+
+    @PutMapping ("/{Id}")
+    public void update(@RequestBody ClientDTO clientDTO , @PathVariable("id") Integer Id){
+      clientService.update(clientDTO , Id);
+    }
+    @GetMapping("/{Id}")
+        public ClientDTO findbyId(@PathVariable("id") Integer id){
+        return clientService.findbyID(id);
+    }
+
+    @GetMapping
+    public List<ClientDTO> findAll() {
+        return clientService.findAll();
+    }
+
+    @DeleteMapping ("/{Id}")
+    public void delete (@PathVariable Integer id) {
+        clientService.delete(id);
+    }
 
 }
