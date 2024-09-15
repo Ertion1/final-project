@@ -18,11 +18,11 @@ public class ClientController {
         clientService.save(clientDTO);
     }
 
-    @PutMapping ("/{Id}")
+    @PutMapping ("/{id}")
     public void update(@RequestBody ClientDTO clientDTO , @PathVariable("id") Integer Id){
       clientService.update(clientDTO , Id);
     }
-    @GetMapping("/{Id}")
+    @GetMapping("/{id}")
         public ClientDTO findbyId(@PathVariable("id") Integer id){
         return clientService.findbyID(id);
     }
@@ -32,7 +32,7 @@ public class ClientController {
         return clientService.findAll();
     }
 
-    @DeleteMapping ("/{Id}")
+    @DeleteMapping ("/{id}")
     public void delete (@PathVariable Integer id) {
         clientService.delete(id);
     }

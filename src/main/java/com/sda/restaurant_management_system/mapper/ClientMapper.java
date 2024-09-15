@@ -8,6 +8,12 @@ public class ClientMapper {
     public static Client mapToEntity(ClientDTO clientDTO){
         Client client=new Client();
         client.setName(clientDTO.getName());
+        client.setLastName(clientDTO.getLastName());
+        client.setCity(clientDTO.getCity());
+        client.setAddress(clientDTO.getAddress());
+        client.setEmail(clientDTO.getEmail());
+        client.setPassword(clientDTO.getPassword());
+        client.setPhoneNumber(clientDTO.getPhoneNumber());
         return client;
     }
 
@@ -20,7 +26,7 @@ public class ClientMapper {
         clientDTO.setAddress(clientEntity.getAddress());
         clientDTO.setCity(clientEntity.getCity());
         clientDTO.setEmail(clientEntity.getEmail());
-        clientDTO.setPassword(clientDTO.getPassword());
+        clientDTO.setPassword(clientEntity.getPassword());
         return clientDTO;
     }
 
