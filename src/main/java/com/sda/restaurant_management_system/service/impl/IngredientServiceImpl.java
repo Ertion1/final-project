@@ -1,15 +1,11 @@
 package com.sda.restaurant_management_system.service.impl;
 
 import com.sda.restaurant_management_system.dto.IngridientDTO;
-import com.sda.restaurant_management_system.dto.RestaurantDTO;
 import com.sda.restaurant_management_system.mapper.IngridientMapper;
-import com.sda.restaurant_management_system.mapper.RestaurantMapper;
 import com.sda.restaurant_management_system.model.Ingredient;
-import com.sda.restaurant_management_system.model.Restaurant;
 import com.sda.restaurant_management_system.repository.IngredientRepository;
 import com.sda.restaurant_management_system.service.IngredientService;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
