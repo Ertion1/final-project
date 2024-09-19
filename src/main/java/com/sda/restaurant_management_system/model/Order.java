@@ -15,8 +15,6 @@ public class Order {
     @Column(name="price_total")
     private  Integer totalPrice ;
 
-
-
     @OneToOne
     @JoinColumn(name="id_restaurant" , referencedColumnName = "id")
     private Restaurant restaurant;
