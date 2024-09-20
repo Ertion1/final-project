@@ -4,7 +4,7 @@ import com.sda.restaurant_management_system.dto.IngridientDTO;
 import com.sda.restaurant_management_system.model.Ingredient;
 
 public class IngridientMapper {
-    public static Ingredient mapTEntity(IngridientDTO ingridientDTO) {
+    public static Ingredient mapToEntity(IngridientDTO ingridientDTO) {
         Ingredient ingridient = new Ingredient();
         ingridient.setName(ingridientDTO.getName());
         return ingridient;
