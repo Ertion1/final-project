@@ -19,13 +19,9 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ClientServiceImp implements ClientService {
 
-    private ClientRepository clientRepository;
+    private final ClientRepository clientRepository;
     private final ClientFilteringRepository clientFilteringRepository;
 
-    public  ClientServiceImp(ClientRepository clientRepository, ClientFilteringRepository clientFilteringRepository) {
-        this.clientRepository = clientRepository;
-        this.clientFilteringRepository = clientFilteringRepository;
-    }
 
     @Override
     public  void save (ClientDTO clientDTO){
