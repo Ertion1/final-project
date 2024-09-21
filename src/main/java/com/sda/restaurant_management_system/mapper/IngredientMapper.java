@@ -12,10 +12,10 @@ public class IngredientMapper {
 
     public static IngredientDTO mapToDTO(Ingredient ingredient) {
         IngredientDTO ingridientDTO = new IngredientDTO();
-        ingridientDTO.setId(ingridientDTO.getId());
-        ingridientDTO.setName(ingridientDTO.getName());
-        ingridientDTO.setCalories(ingridientDTO.getCalories());
-        ingridientDTO.setQuantityType(ingridientDTO.getQuantityType());
+        ingridientDTO.setId(ingredient.getId());
+        ingridientDTO.setName(ingredient.getName());
+        ingridientDTO.setCalories(ingredient.getCalories());
+        ingridientDTO.setQuantityType(ingredient.getQuantityType());
         return ingridientDTO;
     }
 }

@@ -1,14 +1,15 @@
 package com.sda.restaurant_management_system.service.impl;
 
 import com.sda.restaurant_management_system.dto.IngredientDTO;
-import com.sda.restaurant_management_system.dto.IngredientDTO;
-import com.sda.restaurant_management_system.mapper.IngredientMapper;
+import com.sda.restaurant_management_system.dto.filterDTO.Filters;
+import com.sda.restaurant_management_system.mapper.ClientMapper;
 import com.sda.restaurant_management_system.mapper.IngredientMapper;
 import com.sda.restaurant_management_system.model.Ingredient;
+import com.sda.restaurant_management_system.repository.IngredientFilteringRepository;
 import com.sda.restaurant_management_system.repository.IngredientRepository;
 import com.sda.restaurant_management_system.service.IngredientService;
 import jakarta.transaction.Transactional;
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,15 +18,13 @@ import java.util.Optional;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class IngredientServiceImpl implements IngredientService{
 
     private final IngredientRepository ingredientRepository;
+    private final IngredientFilteringRepository ingredientFilteringRepository;
 
 
-
-    public IngredientServiceImpl (IngredientRepository ingredientRepository){
-        this.ingredientRepository=ingredientRepository;
-    }
 
     @Override
     public void save(IngredientDTO ingridientDTO) {
@@ -68,5 +67,9 @@ public class IngredientServiceImpl implements IngredientService{
     @Override
     public void delete(Integer Id){
 
+    }
+    @Override
+    public List<IngredientDTO> filter(Filters filters) {
+        return ingredientFilteringRepository.filter(filters).stream().map(IngredientMapper::mapToDTO).toList();
     }
 }
