@@ -19,7 +19,7 @@ public class DishIngredientFilteringRepository {
     @PersistenceContext
     private EntityManager entityManager;
 
-    private static String BASE_QUERY = "select c from Client c where 1=1 ";
+    private static String BASE_QUERY = "select di from DishIngredient di where 1=1 ";
 
     public List<DishIngredient> filter(Filters filters) {
         String logicalOperator= extractLogicalOperator(filters.getLogical());

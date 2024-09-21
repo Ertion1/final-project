@@ -11,6 +11,7 @@ import com.sda.restaurant_management_system.model.Ingredient;
 import com.sda.restaurant_management_system.repository.*;
 import com.sda.restaurant_management_system.service.DishIngredientService;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +19,10 @@ import java.util.List;
 import java.util.Optional;
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class DishIngredientServiceImpl implements  DishIngredientService {
 
-    @Autowired
-    private DishIngredientRepository dishIngredientRepository;
+    private final DishIngredientRepository dishIngredientRepository;
     private final DishIngredientFilteringRepository dishIngredientFilteringRepository;
     @Autowired
     private DishRepository dishRepository;
