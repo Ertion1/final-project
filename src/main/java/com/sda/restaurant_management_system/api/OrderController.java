@@ -1,7 +1,9 @@
 package com.sda.restaurant_management_system.api;
 
+import com.sda.restaurant_management_system.dto.ClientDTO;
 import com.sda.restaurant_management_system.dto.OrderDTO;
 import com.sda.restaurant_management_system.dto.OrderDTO;
+import com.sda.restaurant_management_system.dto.filterDTO.Filters;
 import com.sda.restaurant_management_system.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,5 +37,10 @@ public class OrderController {
     @DeleteMapping ("/{id}")
     public void delete (@PathVariable Integer id) {
         orderService.delete(id);
+    }
+
+    @PostMapping ("/filter")
+    public List<OrderDTO> filter(@RequestBody Filters filters){
+        return orderService.filter(filters);
     }
 }

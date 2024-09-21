@@ -15,7 +15,7 @@ import java.util.List;
 
 @Repository
 @Slf4j
-class OrderFilteringRepository {
+public class OrderFilteringRepository {
 
     @PersistenceContext
     private EntityManager entityManager;
