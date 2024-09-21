@@ -1,10 +1,13 @@
 package com.sda.restaurant_management_system.service.impl;
 
 import com.sda.restaurant_management_system.dto.ClientDTO;
+import com.sda.restaurant_management_system.dto.filterDTO.Filters;
 import com.sda.restaurant_management_system.mapper.ClientMapper;
 import com.sda.restaurant_management_system.model.Client;
+import com.sda.restaurant_management_system.repository.ClientFilteringRepository;
 import com.sda.restaurant_management_system.repository.ClientRepository;
 import com.sda.restaurant_management_system.service.ClientService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,12 +16,15 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ClientServiceImp implements ClientService {
 
     private ClientRepository clientRepository;
+    private final ClientFilteringRepository clientFilteringRepository;
 
-    public  ClientServiceImp(ClientRepository clientRepository) {
+    public  ClientServiceImp(ClientRepository clientRepository, ClientFilteringRepository clientFilteringRepository) {
         this.clientRepository = clientRepository;
+        this.clientFilteringRepository = clientFilteringRepository;
     }
 
     @Override
@@ -69,5 +75,10 @@ Client client = clientOpt.get();
     @Override
     public void delete(Integer Id){
 
+    }
+
+    @Override
+    public List<ClientDTO> filter(Filters filters) {
+        return clientFilteringRepository.filter(filters).stream().map(ClientMapper::mapToDTO).toList();
     }
 }
