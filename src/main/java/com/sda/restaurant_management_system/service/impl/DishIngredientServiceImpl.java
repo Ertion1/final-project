@@ -9,11 +9,14 @@ import com.sda.restaurant_management_system.repository.DishIngredientRepository;
 import com.sda.restaurant_management_system.repository.DishRepository;
 import com.sda.restaurant_management_system.repository.IngredientRepository;
 import com.sda.restaurant_management_system.service.DishIngredientService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
+@Transactional
 public class DishIngredientServiceImpl implements  DishIngredientService {
     @Autowired
     private DishIngredientRepository dishIngredientRepository;

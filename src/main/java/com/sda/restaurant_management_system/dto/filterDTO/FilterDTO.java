@@ -7,6 +7,6 @@ public class FilterDTO {
     private String field;
     private String value;
     private Operator operator;
-    boolean test;
+    boolean text;
 
 }

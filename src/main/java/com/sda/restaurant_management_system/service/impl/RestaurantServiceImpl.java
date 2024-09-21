@@ -1,10 +1,14 @@
 package com.sda.restaurant_management_system.service.impl;
 
 import com.sda.restaurant_management_system.dto.RestaurantDTO;
+import com.sda.restaurant_management_system.dto.filterDTO.Filters;
 import com.sda.restaurant_management_system.mapper.RestaurantMapper;
 import com.sda.restaurant_management_system.model.Restaurant;
+import com.sda.restaurant_management_system.repository.RestaurantFilteringRepository;
 import com.sda.restaurant_management_system.repository.RestaurantRepository;
 import com.sda.restaurant_management_system.service.RestaurantService;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,12 +19,13 @@ import static com.sda.restaurant_management_system.mapper.ClientMapper.mapToEnti
 import static com.sda.restaurant_management_system.mapper.RestaurantMapper.mapTo;
 
 @Service
+@Transactional
+@RequiredArgsConstructor
 public class RestaurantServiceImpl implements RestaurantService {
 
     private final RestaurantRepository restaurantRepository;
-    public RestaurantServiceImpl(RestaurantRepository restaurantRepository) {
-        this.restaurantRepository = restaurantRepository;
-    }
+    private final RestaurantFilteringRepository restaurantFilteringRepository;
+
 @Override
     public void save(RestaurantDTO restaurantDTO){
     Restaurant restaurant= RestaurantMapper.mapTo(restaurantDTO);
@@ -66,8 +71,11 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     }
 
-
-
+    @Override
+    public List<RestaurantDTO> filter(Filters filters) {
+        return restaurantFilteringRepository.filter(filters).stream().
+                map(RestaurantMapper::mapToDTO).toList();
+    }
 
 
 }
