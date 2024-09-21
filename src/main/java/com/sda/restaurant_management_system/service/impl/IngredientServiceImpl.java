@@ -1,11 +1,14 @@
 package com.sda.restaurant_management_system.service.impl;
 
 import com.sda.restaurant_management_system.dto.IngredientDTO;
+import com.sda.restaurant_management_system.dto.IngredientDTO;
+import com.sda.restaurant_management_system.mapper.IngredientMapper;
 import com.sda.restaurant_management_system.mapper.IngredientMapper;
 import com.sda.restaurant_management_system.model.Ingredient;
 import com.sda.restaurant_management_system.repository.IngredientRepository;
 import com.sda.restaurant_management_system.service.IngredientService;
 import jakarta.transaction.Transactional;
+import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
