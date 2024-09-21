@@ -1,6 +1,5 @@
 package com.sda.restaurant_management_system.api;
 
-import com.sda.restaurant_management_system.dto.ClientDTO;
 import com.sda.restaurant_management_system.dto.DishDTO;
 import com.sda.restaurant_management_system.dto.filterDTO.Filters;
 import com.sda.restaurant_management_system.service.DishService;
@@ -13,6 +12,7 @@ import java.util.List;
 public class DishController {
     @Autowired
     private DishService dishService;
+
     @PostMapping
     public void save(@RequestBody DishDTO dishDTO){
         this.dishService.save(dishDTO);
@@ -35,6 +35,8 @@ public class DishController {
     public void delete (@PathVariable Integer id) {
         dishService.delete(id);
     }
-
-
+    @PostMapping ("/filter")
+    public List<DishDTO> filter (@RequestBody Filters filters){
+        return dishService.filter(filters);
+    }
 }

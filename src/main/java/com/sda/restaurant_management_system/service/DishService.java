@@ -12,5 +12,7 @@ public interface DishService  {
     DishDTO findById(Integer id);
     List<DishDTO>findAll();
     void delete(Integer id);
+
     List<DishDTO> filter(Filters filters);
+
 }

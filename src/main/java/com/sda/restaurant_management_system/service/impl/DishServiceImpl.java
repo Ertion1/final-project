@@ -7,10 +7,12 @@ import com.sda.restaurant_management_system.mapper.DishMapper;
 import com.sda.restaurant_management_system.mapper.RestaurantMapper;
 import com.sda.restaurant_management_system.model.Dish;
 import com.sda.restaurant_management_system.model.Restaurant;
+import com.sda.restaurant_management_system.repository.DishFilteringRepository;
 import com.sda.restaurant_management_system.repository.DishRepository;
 import com.sda.restaurant_management_system.service.DishService;
 import jakarta.persistence.Id;
 import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,11 +21,10 @@ import java.util.Optional;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class DishServiceImpl implements DishService {
     private final DishRepository dishRepository;
-    public DishServiceImpl(DishRepository dishRepository){
-        this.dishRepository = dishRepository;
-    }
+    private final DishFilteringRepository dishFilteringRepository;
 
     @Override
     public void save(DishDTO dishDTO) {
@@ -75,6 +76,7 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public List<DishDTO> filter(Filters filters) {
-        return null;
+        return dishFilteringRepository.filter(filters).stream().
+                map(DishMapper::mapToDTO).toList();
     }
 }
