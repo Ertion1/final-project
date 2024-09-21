@@ -1,6 +1,8 @@
 package com.sda.restaurant_management_system.api;
 
+import com.sda.restaurant_management_system.dto.ClientDTO;
 import com.sda.restaurant_management_system.dto.DishDTO;
+import com.sda.restaurant_management_system.dto.filterDTO.Filters;
 import com.sda.restaurant_management_system.service.DishService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -33,4 +35,6 @@ public class DishController {
     public void delete (@PathVariable Integer id) {
         dishService.delete(id);
     }
+
+
 }

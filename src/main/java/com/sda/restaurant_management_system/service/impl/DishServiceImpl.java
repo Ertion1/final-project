@@ -2,6 +2,7 @@ package com.sda.restaurant_management_system.service.impl;
 
 import com.sda.restaurant_management_system.dto.DishDTO;
 import com.sda.restaurant_management_system.dto.RestaurantDTO;
+import com.sda.restaurant_management_system.dto.filterDTO.Filters;
 import com.sda.restaurant_management_system.mapper.DishMapper;
 import com.sda.restaurant_management_system.mapper.RestaurantMapper;
 import com.sda.restaurant_management_system.model.Dish;
@@ -70,5 +71,10 @@ public class DishServiceImpl implements DishService {
     @Override
     public void delete(Integer id) {
 
+    }
+
+    @Override
+    public List<DishDTO> filter(Filters filters) {
+        return null;
     }
 }

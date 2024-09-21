@@ -11,4 +11,6 @@ public interface DishIngredientService {
     DishIngredientDTO findById(Integer id);
     List<DishIngredientDTO> findAll();
     void delete (Integer id);
+
+
 }
