@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Data
-public class IngridientDTO {
+public class IngredientDTO {
     private Integer id;
     private String name;
     private Integer calories;

@@ -8,9 +8,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class DishIngridientDTO {
+public class DishIngredientDTO {
     private Integer id;
     private Integer quantity;
     private DishDTO dish;
-    private IngridientDTO ingredient ;
+    private IngredientDTO ingredient ;
 }
