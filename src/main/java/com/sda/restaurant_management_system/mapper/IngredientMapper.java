@@ -1,17 +1,17 @@
 package com.sda.restaurant_management_system.mapper;
 
-import com.sda.restaurant_management_system.dto.IngridientDTO;
+import com.sda.restaurant_management_system.dto.IngredientDTO;
 import com.sda.restaurant_management_system.model.Ingredient;
 
-public class IngridientMapper {
-    public static Ingredient mapToEntity(IngridientDTO ingridientDTO) {
+public class IngredientMapper {
+    public static Ingredient mapToEntity(IngredientDTO ingridientDTO) {
         Ingredient ingridient = new Ingredient();
         ingridient.setName(ingridientDTO.getName());
         return ingridient;
     }
 
-    public static IngridientDTO mapToDTO(Ingredient ingredient) {
-        IngridientDTO ingridientDTO = new IngridientDTO();
+    public static IngredientDTO mapToDTO(Ingredient ingredient) {
+        IngredientDTO ingridientDTO = new IngredientDTO();
         ingridientDTO.setId(ingridientDTO.getId());
         ingridientDTO.setName(ingridientDTO.getName());
         ingridientDTO.setCalories(ingridientDTO.getCalories());
