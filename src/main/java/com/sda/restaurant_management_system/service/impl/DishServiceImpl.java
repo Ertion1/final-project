@@ -31,7 +31,7 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public void uppdate(DishDTO dishDTO, Integer id) {
+    public void update(DishDTO dishDTO, Integer id) {
         Optional<Dish> dishOptional=dishRepository.findById(id);
         if (!dishOptional.isPresent()){
             throw new RuntimeException("Dish with this id not fund");
