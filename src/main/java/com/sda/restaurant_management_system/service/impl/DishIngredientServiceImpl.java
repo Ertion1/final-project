@@ -1,13 +1,14 @@
 package com.sda.restaurant_management_system.service.impl;
 
 import com.sda.restaurant_management_system.dto.DishIngredientDTO;
+import com.sda.restaurant_management_system.dto.RestaurantDTO;
+import com.sda.restaurant_management_system.dto.filterDTO.Filters;
 import com.sda.restaurant_management_system.mapper.DishIngredientMapper;
+import com.sda.restaurant_management_system.mapper.RestaurantMapper;
 import com.sda.restaurant_management_system.model.Dish;
 import com.sda.restaurant_management_system.model.DishIngredient;
 import com.sda.restaurant_management_system.model.Ingredient;
-import com.sda.restaurant_management_system.repository.DishIngredientRepository;
-import com.sda.restaurant_management_system.repository.DishRepository;
-import com.sda.restaurant_management_system.repository.IngredientRepository;
+import com.sda.restaurant_management_system.repository.*;
 import com.sda.restaurant_management_system.service.DishIngredientService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,10 @@ import java.util.Optional;
 @Service
 @Transactional
 public class DishIngredientServiceImpl implements  DishIngredientService {
+
     @Autowired
     private DishIngredientRepository dishIngredientRepository;
+    private final DishIngredientFilteringRepository dishIngredientFilteringRepository;
     @Autowired
     private DishRepository dishRepository;
     @Autowired
@@ -76,4 +79,10 @@ public class DishIngredientServiceImpl implements  DishIngredientService {
     public void delete(Integer id) {
      this.dishIngredientRepository.deleteById(id);
     }
+    @Override
+    public List<DishIngredientDTO> filter(Filters filters) {
+        return dishIngredientFilteringRepository.filter(filters).stream().
+                map(DishIngredientMapper::mapToDTO).toList();
+    }
+
 }
