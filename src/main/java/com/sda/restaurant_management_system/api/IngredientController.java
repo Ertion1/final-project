@@ -1,6 +1,8 @@
 package com.sda.restaurant_management_system.api;
 import com.sda.restaurant_management_system.dto.DishDTO;
 import com.sda.restaurant_management_system.dto.IngredientDTO;
+import com.sda.restaurant_management_system.dto.RestaurantDTO;
+import com.sda.restaurant_management_system.dto.filterDTO.Filters;
 import com.sda.restaurant_management_system.model.Ingredient;
 import com.sda.restaurant_management_system.service.DishService;
 import com.sda.restaurant_management_system.service.IngredientService;
@@ -35,4 +37,9 @@ public class IngredientController {
     public void delete (@PathVariable Integer id) {
         ingredientService.delete(id);
     }
+    @PostMapping ("/filter")
+    public List<IngredientDTO> filter (@RequestBody Filters filters){
+        return ingredientService.filter(filters);
+    }
+
 }
