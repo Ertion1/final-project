@@ -1,6 +1,8 @@
 package com.sda.restaurant_management_system.service;
 
 import com.sda.restaurant_management_system.dto.DishIngredientDTO;
+import com.sda.restaurant_management_system.dto.RestaurantDTO;
+import com.sda.restaurant_management_system.dto.filterDTO.Filters;
 
 import java.util.List;
 
@@ -12,5 +14,6 @@ public interface DishIngredientService {
     List<DishIngredientDTO> findAll();
     void delete (Integer id);
 
+    List<DishIngredientDTO> filter(Filters filters);
 
 }
