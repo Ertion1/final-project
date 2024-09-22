@@ -14,5 +14,7 @@ public interface OrderService {
     List<OrderDTO> findAll();
     void delete(Integer id);
     List<OrderDTO> filter(Filters filters);
+
+    List<OrderDTO> findAllSortedByPrice();
 }
 

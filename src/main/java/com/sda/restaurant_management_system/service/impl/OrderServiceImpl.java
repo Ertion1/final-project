@@ -68,4 +68,9 @@ public class OrderServiceImpl implements OrderService {
             return orderFilteringRepository.filter(filters).stream().
                     map(OrderMapper::mapToDTO).toList();
         }
+
+    @Override
+    public List<OrderDTO> findAllSortedByPrice() {
+        return orderRepository.findAllSortedByPrice().stream().map(OrderMapper::mapToDTO).toList();
+    }
 }
