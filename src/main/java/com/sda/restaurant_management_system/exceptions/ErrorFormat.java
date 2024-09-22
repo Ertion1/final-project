@@ -1,7 +1,14 @@
 package com.sda.restaurant_management_system.exceptions;
 
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import lombok.Data;
 
-@RestControllerAdvice
+import java.time.LocalDateTime;
+
+
+@Data
 public class ErrorFormat {
+    private String message;
+    private LocalDateTime time;
+
+
 }

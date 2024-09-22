@@ -8,6 +8,7 @@ import com.sda.restaurant_management_system.mapper.RestaurantMapper;
 import com.sda.restaurant_management_system.model.Dish;
 import com.sda.restaurant_management_system.model.DishIngredient;
 import com.sda.restaurant_management_system.model.Ingredient;
+import com.sda.restaurant_management_system.model.OrderDish;
 import com.sda.restaurant_management_system.repository.*;
 import com.sda.restaurant_management_system.service.DishIngredientService;
 import jakarta.transaction.Transactional;
@@ -15,8 +16,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Stream;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -24,6 +26,7 @@ public class DishIngredientServiceImpl implements  DishIngredientService {
 
     private final DishIngredientRepository dishIngredientRepository;
     private final DishIngredientFilteringRepository dishIngredientFilteringRepository;
+    private final OrderDishRepository orderDishRepository;
     @Autowired
     private DishRepository dishRepository;
     @Autowired
@@ -84,6 +87,53 @@ public class DishIngredientServiceImpl implements  DishIngredientService {
     public List<DishIngredientDTO> filter(Filters filters) {
         return dishIngredientFilteringRepository.filter(filters).stream().
                 map(DishIngredientMapper::mapToDTO).toList();
+    }
+
+    @Override
+    public List<Ingredient> findMostUsedIngredients() {
+        List<DishIngredient> allDishIngredients = dishIngredientRepository.findAll();
+        List<Dish> allDishes = dishRepository.findAll();
+        Map<Dish , Integer> dishCount = new HashMap<>();
+
+
+
+        for(Dish d : allDishes)
+        {
+            List<OrderDish> ordersOfDish= orderDishRepository.findAllByDishId(d.getId());
+            dishCount.put(d,ordersOfDish.size());
+        }
+        Stream<Map.Entry<Dish,Integer>> sorted =
+                dishCount.entrySet().stream()
+                        .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()));
+       List<Dish> countedDishes = new ArrayList<>();
+        int count=0;
+
+        for(Map.Entry<Dish,Integer> stream:sorted.toList())
+        {
+            if(count>9) {
+                break;
+            }
+                countedDishes.add(stream.getKey());
+                count++;
+        }
+
+        Set<Ingredient> ingredients = new HashSet<>();
+
+        for (Dish d : allDishes)
+        {
+            List<Ingredient> ingredientsOfDishes=dishIngredientRepository
+                    .findAllByDishId(d.getId()).stream().map(DishIngredient::getIngredient).toList();
+            ingredients.addAll(ingredientsOfDishes);
+        }
+
+        return new ArrayList<>(ingredients) ;
+
+
+
+
+
+
+
     }
 
 }
