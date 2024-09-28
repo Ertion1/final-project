@@ -18,7 +18,7 @@ import java.util.List;
 public class OrderDishFilteringRepository {
     @PersistenceContext
     private EntityManager entityManager;
-    private  static String BASE_QUERY = "select od from OrderDish od  JOIN od.dish d where 1=1";
+    private  static String BASE_QUERY = "select od from OrderDish od  JOIN od.dish d where 1=1 ";
 
     public List<OrderDish> filter(Filters filters)
     {

@@ -12,7 +12,7 @@ public class OrderMapper {
 
     public static OrderDTO mapToDTO(Order order) {
         OrderDTO orderDTO = new OrderDTO();
-        orderDTO.setTotalPrice(orderDTO.getTotalPrice());
+        orderDTO.setTotalPrice(order.getTotalPrice());
         orderDTO.setId(order.getId());
         return orderDTO;
     }

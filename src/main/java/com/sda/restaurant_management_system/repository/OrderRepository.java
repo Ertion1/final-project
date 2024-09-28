@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.support.JpaRepositoryImplementati
 import java.util.List;
 
 public interface OrderRepository extends JpaRepositoryImplementation<Order,Integer > {
-    @Query("Select o from Order o order by o.price desc")
-    List<Order> findAllSortedByPrice( );
+    @Query("select o from Order o order by o.totalPrice desc")
+    List<Order> findAllSortedByPrice();
 }
